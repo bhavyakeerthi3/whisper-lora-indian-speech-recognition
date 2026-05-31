@@ -1,0 +1,5 @@
+audio_path,text,language,split
+data/audio/te_sample.wav,namaskaram prapancham,te,train
+data/audio/hi_sample.wav,namaste duniya,hi,validation
+data/audio/en_sample.wav,hello world,en,test
+
