@@ -112,6 +112,8 @@ def train(config_path: str) -> None:
         if "eval_strategy" in inspect.signature(Seq2SeqTrainingArguments).parameters
         else "evaluation_strategy": "steps"
     }
+    if config.get("deepspeed"):
+        training_kwargs["deepspeed"] = config["deepspeed"]
 
     args = Seq2SeqTrainingArguments(
         output_dir=config["output_dir"],
