@@ -1,0 +1,12 @@
+input_manifest: data/sample_manifest.csv
+output_manifest: outputs/processed_manifest
+target_sample_rate: 16000
+min_duration_seconds: 0.5
+max_duration_seconds: 30.0
+allowed_languages:
+  - te
+  - hi
+  - en
+text_min_chars: 1
+text_max_chars: 300
+
