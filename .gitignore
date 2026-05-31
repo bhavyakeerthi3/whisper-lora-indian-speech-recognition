@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Local runtime outputs
+outputs/
+work/
+
+# ML checkpoints and model artifacts
+checkpoint-*/
+*.safetensors
+*.bin
+*.pt
+*.pth
+
+# Spark/Hadoop local metadata
+_SUCCESS
+*.crc
+.spark-warehouse/
+metastore_db/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+

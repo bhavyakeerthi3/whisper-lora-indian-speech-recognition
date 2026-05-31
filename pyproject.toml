@@ -1,0 +1,10 @@
+[project]
+name = "indic-whisper-asr"
+version = "0.1.0"
+description = "Distributed Whisper LoRA fine-tuning project for Indian multilingual speech recognition."
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
