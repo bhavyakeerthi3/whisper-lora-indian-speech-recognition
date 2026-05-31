@@ -1,0 +1,6 @@
+model,method,dataset_hours,telugu_wer,hindi_wer,english_wer,overall_wer,overall_cer,relative_wer_improvement,training_hours,gpu_memory_gb
+openai/whisper-small,zero-shot,TBD,TBD,TBD,TBD,TBD,TBD,,,
+openai/whisper-small,full-finetuning,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD
+openai/whisper-small,lora,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD
+openai/whisper-small,qlora,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD
+

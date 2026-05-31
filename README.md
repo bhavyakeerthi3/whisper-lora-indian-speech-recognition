@@ -43,7 +43,36 @@ WER / CER Evaluation
 - Parameter-efficient fine-tuning of Whisper with LoRA.
 - Mixed-precision training using FP16 or BF16.
 - Multilingual evaluation with WER and CER.
+- Experiment design for comparing baseline Whisper, full fine-tuning, LoRA, and QLoRA.
+- Distributed training launch templates for FSDP and DeepSpeed.
 - Clean separation between data engineering, model training, inference, and evaluation.
+
+## Experimental Validation
+
+The repository includes the code needed to run baseline and fine-tuned evaluations, but final WER/CER values should only be reported after running on real speech datasets. See `EXPERIMENTS.md` and `results/results_template.csv` for the experiment plan and reporting format.
+
+Minimum results to publish:
+
+| Metric | Description |
+| --- | --- |
+| Baseline WER/CER | Zero-shot Whisper evaluation before fine-tuning. |
+| LoRA WER/CER | Whisper with LoRA adapters after fine-tuning. |
+| Relative WER improvement | `(baseline_wer - lora_wer) / baseline_wer * 100`. |
+| Dataset hours | Computed from processed manifests by language and split. |
+| Training resources | GPU type, training time, peak memory, trainable parameter percentage. |
+
+## Target Dataset Scale
+
+The full-scale experiment is designed for roughly 950+ hours of Indian multilingual speech:
+
+| Language | Target Hours | Sources |
+| --- | ---: | --- |
+| Telugu | 250 | Common Voice, OpenSLR, Indic speech corpora |
+| Hindi | 300 | Common Voice, OpenSLR, Indic speech corpora |
+| English | 400 | Common Voice, Indian English corpora |
+| Code-mixed | TBD | Hindi-English and Telugu-English samples |
+
+These are target experiment sizes. The final README should be updated with measured hours from the Spark preprocessing output after the full dataset is prepared.
 
 ## Repository Layout
 
@@ -147,6 +176,19 @@ spark-submit \
   src/indic_whisper_asr/preprocessing/spark_audio_preprocess.py \
   --config configs/preprocess.yaml
 ```
+
+## Distributed Training
+
+Single-node or multi-GPU training can be launched with Hugging Face Accelerate/FSDP:
+
+```bash
+accelerate launch \
+  --config_file configs/accelerate_fsdp.yaml \
+  src/indic_whisper_asr/training/train_lora.py \
+  --config configs/train_lora.yaml
+```
+
+DeepSpeed ZeRO-2 configuration is provided in `configs/deepspeed_zero2.json` for larger Whisper variants.
 
 ## Notes
 
