@@ -158,4 +158,4 @@ For a quick preprocessing smoke test, generate the local WAV samples first:
 python scripts/generate_sample_audio.py
 ```
 
-Those tones are only placeholders for validating the pipeline. They are not useful for model quality.
+
